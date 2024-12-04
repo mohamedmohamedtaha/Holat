@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linearPhone"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <com.hbb20.CountryCodePicker
+        android:id="@+id/CountryCodePicker"
+        style="@style/CountryCode" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutPhone"
+        style="@style/TextInputLayout"
+        android:layout_weight="1">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phoneEt"
+            style="@style/MatchParentWidthWrapContent.TextInputEditText"
+            android:hint="@string/phone_number"
+            android:inputType="phone"
+            android:gravity="start"
+            android:maxLength="9"
+            android:textColorHint="@color/primaryText" />
+    </com.google.android.material.textfield.TextInputLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

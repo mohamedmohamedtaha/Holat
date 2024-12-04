@@ -1,0 +1,11 @@
+package com.holat.login.models
+
+data class SocialMedia(
+    val FACEBOOK_URL: FACEBOOKURL,
+    val INSTAGRAM_URL: INSTAGRAMURL,
+    val LINKEDIN_URL: LINKEDINURL,
+    val SNAPCHAT_URL: SNAPCHATURL,
+    val TIKTOK_URL: TIKTOKURL,
+    val TWITTER_URL: TWITTERURL,
+    val YOUTUBE_URL: YOUTUBEURL
+)

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layoutDirection="locale"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/reloadCaptcha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_8sdp"
+        android:paddingBottom="@dimen/_8sdp"
+        android:src="@drawable/reload"
+        app:layout_constraintBottom_toBottomOf="@id/layoutCheckCode"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/captcha"
+        app:layout_constraintTop_toTopOf="@id/layoutCheckCode" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/captcha"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@id/layoutCheckCode"
+        app:layout_constraintEnd_toStartOf="@id/reloadCaptcha"
+        app:layout_constraintStart_toEndOf="@id/layoutCheckCode"
+        app:layout_constraintTop_toTopOf="@id/layoutCheckCode" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutCheckCode"
+        style="@style/MatchParentWidthWrapContent.WithoutStartMargin"
+        android:layout_width="@dimen/_120sdp"
+        app:layout_constraintEnd_toStartOf="@id/captcha"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/checkCodeEt"
+            style="@style/MatchParentWidthWrapContent.TextInputEditText"
+            android:hint="@string/check_code"
+            android:inputType="text"
+            android:maxLength="5"
+            android:textColorHint="@color/primaryText" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layoutDirection="locale"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLineStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.03" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLineEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.98" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.03" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLineBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.98" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/guideLineEnd"
+        app:layout_constraintStart_toEndOf="@id/guideLineStart"
+        app:layout_constraintTop_toBottomOf="@id/guideLineTop">
+        <include
+            android:id="@+id/includeCountryCodeWithPhone"
+            layout="@layout/country_code_with_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/layoutUserPhone"-->
+<!--            style="@style/ZeroDpWidthWrapContent.TextInputLayout"-->
+<!--            app:layout_constraintEnd_toStartOf="@id/countryCode"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/countryCode"-->
+<!--            tools:layout_editor_absoluteY="229dp">-->
+
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/phoneEt"-->
+<!--                style="@style/MatchParentWidthWrapContent.TextInputEditText"-->
+<!--                android:hint="@string/phone_number"-->
+<!--                android:inputType="number"-->
+<!--                android:maxLength="13"-->
+<!--                android:textColorHint="@color/primaryText" />-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutUserName"
+            style="@style/MatchParentWidthWrapContent.TextInputLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/includeCountryCodeWithPhone"
+            tools:layout_editor_absoluteY="229dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usernameEt"
+                style="@style/MatchParentWidthWrapContent.TextInputEditText"
+                android:hint="@string/username"
+                android:inputType="text|textCapSentences"
+                android:maxLength="100"
+                android:textColorHint="@color/primaryText" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+            android:id="@+id/spinnerNationalTypes"
+            style="@style/SmartMaterialSpinner"
+            app:smsp_hint="@string/national_type"
+            app:smsp_floatingLabelText="@string/national_type"
+        app:layout_constraintTop_toBottomOf="@id/layoutUserName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+<!--      app:smsp_itemListHintBackgroundColor="#808080"  -->
+<!--        app:smsp_itemListHintColor="#FFFFFF"-->
+<!--        app:smsp_errorText="This is error text. You can show it"-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutNationalId"
+            style="@style/MatchParentWidthWrapContent.TextInputLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinnerNationalTypes"
+            tools:layout_editor_absoluteY="229dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/NationalIdEt"
+                style="@style/MatchParentWidthWrapContent.TextInputEditText"
+                android:hint="@string/nationalId"
+                android:inputType="text"
+                android:maxLength="16"
+                android:digits="@string/digits_text_and_numbers"
+                android:textColorHint="@color/primaryText" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutEmail"
+            style="@style/MatchParentWidthWrapContent.TextInputLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutNationalId"
+            tools:layout_editor_absoluteY="229dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailEt"
+                style="@style/MatchParentWidthWrapContent.TextInputEditText"
+                android:hint="@string/email"
+                android:maxLength="64"
+                android:inputType="textEmailAddress"
+                android:textColorHint="@color/primaryText" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutDateOFBirth"
+            style="@style/MatchParentWidthWrapContent.TextInputLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutEmail"
+            tools:layout_editor_absoluteY="229dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/datOfBirthEt"
+                style="@style/MatchParentWidthWrapContent.TextInputEditText"
+                android:hint="@string/date_of_birth"
+                android:focusable="false"
+                android:textColorHint="@color/primaryText" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <include android:id="@+id/includeCaptcha"
+            layout="@layout/custom_captcha"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutDateOFBirth"
+            />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/createAccountBtn"
+            style="@style/AppCompatButtonGreen"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_22sdp"
+            android:text="@string/create_account"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/includeCaptcha" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

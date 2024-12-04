@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="locale"
+    android:background="@color/colorPrimaryDark"
+    android:paddingTop="@dimen/_12sdp">
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearMyAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/myAccount"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:padding="@dimen/_4sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/my_account" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPageName"
+            tools:text="Title"
+            style="@style/TextViewWithZeroWidthWhiteColorNoMargin"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icNotification"
+        android:layout_marginEnd="@dimen/_12sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/notification"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewTitle"
+        tools:text="Title"
+        style="@style/TextViewWithZeroWidthWhiteColorNoMargin"
+        app:layout_constraintTop_toBottomOf="@id/linearMyAccount"
+        app:layout_constraintEnd_toEndOf="@id/icNotification"
+        app:layout_constraintStart_toStartOf="@id/linearMyAccount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchView"
+        android:inputType="number"
+        android:queryHint="@string/number_compliant"
+        android:background="@drawable/bg_bottom_sheet_dialog_white_all"
+        android:iconifiedByDefault="false"
+
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="@id/icNotification"
+        app:layout_constraintStart_toStartOf="@id/linearMyAccount"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="10dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linear"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottom_sheet_dialog_white"
+    android:orientation="vertical"
+    app:layout_constraintEnd_toStartOf="@id/guideLineEnd"
+    app:layout_constraintStart_toEndOf="@id/guideLineStart">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="@dimen/_51sdp"
+        android:layout_height="@dimen/_51sdp"
+        android:layout_gravity="center"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="@dimen/_22sdp"
+        app:layout_constraintEnd_toStartOf="@id/guideLineEnd"
+        app:layout_constraintStart_toEndOf="@id/guideLineStart"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/attachment" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAddAttachment"
+        style="@style/MatchParentWidthWrapContent.TextView"
+        android:gravity="center"
+        android:text="@string/add_attachment"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvData3"
+        style="@style/MatchParentWidthWrapContent.TextViewGray"
+        android:gravity="center"
+        android:text="@string/upload_attachment" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/cameraBtn"
+        style="@style/AppCompatButtonGreen"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/camera" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/GalleryBtn"
+        style="@style/AppCompatButtonGreen"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:paddingStart="@dimen/_74sdp"
+        android:paddingEnd="@dimen/_74sdp"
+        android:text="@string/gallery"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/personalFileBtn"
+        style="@style/AppCompatButtonGreen"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:paddingStart="@dimen/_54sdp"
+        android:paddingEnd="@dimen/_54sdp"
+        android:text="@string/personal_file"
+        android:layout_marginBottom="@dimen/_22sdp" />
+</androidx.appcompat.widget.LinearLayoutCompat>
