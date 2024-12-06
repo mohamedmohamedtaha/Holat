@@ -25,9 +25,11 @@ import javax.net.ssl.SSLContext
 import javax.net.ssl.SSLSocketFactory
 import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
-const val IMAGE_URL= "https://con.samacares.sa/app-files/"
+
+const val IMAGE_URL = "https://con.samacares.sa/app-files/"
+
 //const val BASE_URL ="https://con.samacares.sa/hollat_sama/public/"
-const val BASE_URL ="https://back-dev.hollat.net/hollat_upgrade_develop/public/"
+const val BASE_URL = "https://back-dev.hollat.net/hollat_upgrade_develop/public/"
 //const val BASE_URL= "https://care.ia.gov.sa/hollat_upgrade/public/"
 /**
 Created by Mohamed Mohamed Taha on 11/12/2023
@@ -41,26 +43,29 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideGsonConvertorFactory(gson: Gson):GsonConverterFactory = GsonConverterFactory.create(gson)
+    fun provideGsonConvertorFactory(gson: Gson): GsonConverterFactory =
+        GsonConverterFactory.create(gson)
 
     @Provides
     @Singleton
-    fun provideLogging():HttpLoggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+    fun provideLogging(): HttpLoggingInterceptor =
+        HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
     @Provides
     @Singleton
-    fun provideOriginalInterceptor(repository: DataStoreRepository) = Interceptor{ chain->
+    fun provideOriginalInterceptor(repository: DataStoreRepository) = Interceptor { chain ->
         val originalRequest = chain.request()
         val isAuthorize = originalRequest.headers["isAuthorize"] == "true"
         val requestBuilder = originalRequest.newBuilder()
-           .addHeader("Accept", "application/json")
-           .removeHeader("isAuthorize")
-        if (isAuthorize){
+            .addHeader("Accept", "application/json")
+            .removeHeader("isAuthorize")
+        if (isAuthorize) {
             val token = runBlocking { repository.getToken().first() }
             requestBuilder.addHeader("Authorization", "Bearer $token")
         }
         chain.proceed(requestBuilder.build())
     }
+
     @Provides
     @Singleton
     fun provideTrustAllCertificateHttpClient(
@@ -109,7 +114,7 @@ class NetworkModule {
     }
 
 
-//    @Provides
+    //    @Provides
 //    @Singleton
 //    fun provideUnSafeOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor,
 //                                  loginInterceptor: Interceptor):OkHttpClient{
@@ -166,14 +171,18 @@ class NetworkModule {
     @Singleton
     @Named("baseUrl")
     fun baseUrl() = BASE_URL
-        //Production "https://care.ia.gov.sa/hollat_upgrade/public/"
+
+    //Production "https://care.ia.gov.sa/hollat_upgrade/public/"
     //Develop "https://back-dev.hollat.net/hollat_upgrade_develop/public/"
     // Sama Care https://con.samacares.sa/hollat_sama/public/
     @Provides
     @Singleton
-    fun provideRetrofit(gsonConverterFactory: GsonConverterFactory,
-                        okHttpClient: OkHttpClient,@Named("baseUrl")baseUrl:String):Retrofit{
-        return Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(gsonConverterFactory).client(okHttpClient).build()
+    fun provideRetrofit(
+        gsonConverterFactory: GsonConverterFactory,
+        okHttpClient: OkHttpClient, @Named("baseUrl") baseUrl: String
+    ): Retrofit {
+        return Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(gsonConverterFactory)
+            .client(okHttpClient).build()
     }
 
     @Provides

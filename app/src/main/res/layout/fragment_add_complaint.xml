@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.compliants.fragment.AddComplaintFragment">
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearLayoutCompat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.dynamic.fragments.DynamicFragment"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+<!--    <androidx.appcompat.widget.AppCompatSpinner-->
+<!--        android:id="@+id/spinnerRegions"-->
+<!--        android:layout_margin="@dimen/_10sdp"-->
+<!--        style="@style/AppCompactSpinnerStyle"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/_30sdp"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"/>-->
+<!--    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner-->
+<!--        android:id="@+id/spinnerTicketType"-->
+<!--        style="@style/SmartMaterialSpinner"-->
+<!--        app:smsp_hint="@string/select"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinnerTicketType"
+        android:layout_margin="@dimen/_10sdp"
+        style="@style/AppCompactSpinnerStyle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+        android:id="@+id/spinnerMainReasons"
+        style="@style/SmartMaterialSpinner"
+        app:smsp_hint="@string/select"
+        app:layout_constraintTop_toBottomOf="@id/spinnerTicketType"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+        android:id="@+id/spinnerSubReasons"
+        style="@style/SmartMaterialSpinner"
+        app:smsp_hint="@string/select"
+        app:layout_constraintTop_toBottomOf="@id/spinnerMainReasons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+        android:id="@+id/spinnerSubSubReasons"
+        style="@style/SmartMaterialSpinner"
+        app:smsp_hint="@string/select"
+        app:layout_constraintTop_toBottomOf="@id/spinnerSubReasons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+        android:id="@+id/spinnerSubSubSubReasons"
+        style="@style/SmartMaterialSpinner"
+        app:smsp_hint="@string/select"
+        app:layout_constraintTop_toBottomOf="@id/spinnerSubSubReasons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutDetails"
+        style="@style/MatchParentWidthWrapContent.TextInputLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinnerSubSubSubReasons"
+        tools:layout_editor_absoluteY="229dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/detailsEt"
+            style="@style/MatchParentWidthWrapContent.TextInputEditText"
+            android:hint="@string/details"
+            android:inputType="text"
+            android:maxLength="100"
+            android:textColorHint="@color/primaryText" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <include
+        android:id="@+id/includeAttachFile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        layout="@layout/custom_upload_files"
+        android:layout_margin="@dimen/_12sdp"
+        app:layout_constraintTop_toBottomOf="@id/layoutDetails"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewAttachFiles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_12sdp"
+        android:layout_marginTop="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/includeAttachFile"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/includeAttachFile"
+        app:layout_constraintTop_toBottomOf="@id/includeAttachFile"
+        tools:listitem="@layout/custom_upload_file" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/emptyFieldsBtn"
+        style="@style/AppCompatButtonLightGreen"
+        android:paddingEnd="@dimen/_54sdp"
+        android:paddingStart="@dimen/_54sdp"
+        android:layout_gravity="center"
+        app:backgroundTint="@null"
+        android:text="@string/empty_fields"
+        app:layout_constraintStart_toStartOf="@id/includeAttachFile"
+        app:layout_constraintEnd_toEndOf="@id/includeAttachFile"
+        app:layout_constraintTop_toBottomOf="@id/recyclerViewAttachFiles" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/SendBtn"
+        style="@style/AppCompatButtonGreen"
+        android:paddingEnd="@dimen/_54sdp"
+        android:paddingStart="@dimen/_54sdp"
+        android:layout_gravity="center"
+        android:text="@string/send"
+        app:layout_constraintStart_toStartOf="@id/includeAttachFile"
+        app:layout_constraintEnd_toEndOf="@id/includeAttachFile"
+        app:layout_constraintTop_toBottomOf="@id/emptyFieldsBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/_72sdp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

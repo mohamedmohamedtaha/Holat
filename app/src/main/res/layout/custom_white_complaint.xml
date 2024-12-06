@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView
+    android:id="@+id/cardView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="@dimen/_5sdp"
+    app:strokeColor="@color/colorPrimary"
+    app:strokeWidth="0.5dp"
+    app:cardBackgroundColor="@android:color/white"
+    android:layoutDirection="locale"
+    android:shadowColor="@color/textIcon"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="5dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="@dimen/_5sdp"
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/saving"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/saving_green" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvIdTicket"
+            tools:text="12345678"
+            style="@style/TextViewWithZeroWidthBlackColorNoMargin"
+            android:layout_marginStart="@dimen/_12sdp"
+            app:layout_constraintTop_toTopOf="@id/saving"
+            app:layout_constraintStart_toEndOf="@id/saving"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDetails"
+            tools:text="المنتج  الحسابات الجاريةالمنتج  الحسابات الجاريةالمنتج  الحسابات الجاريةالمنتج  الحسابات الجاريةالمنتج  الحسابات الجاريةالمنتج  الحسابات الجاريةالمنتج  الحسابات الجاريةالمنتج  الحسابات الجاريةالمنتج  الحسابات الجاريةالمنتج  الحسابات الجاريةالمنتج  الحسابات الجارية"
+            style="@style/TextViewWithZeroWidthGrayColorNoMargenNoGravety"
+            android:layout_marginStart="@dimen/_12sdp"
+            app:layout_constraintTop_toBottomOf="@id/tvIdTicket"
+            app:layout_constraintStart_toEndOf="@id/saving"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDate"
+            tools:text="25/12/2023"
+            style="@style/TextViewWithZeroWidthGrayColorSmallSizeNoMargen"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            app:layout_constraintTop_toBottomOf="@id/tvDetails"
+            app:layout_constraintStart_toEndOf="@id/saving" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvState"
+            tools:text="جديد"
+            style="@style/TextViewWithZeroWidthGrayColorSmallSizeNoMargen"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:paddingStart="@dimen/_12sdp"
+            android:paddingEnd="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:textColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/tvDetails"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTime"
+            tools:text="3:00pm"
+            style="@style/TextViewWithZeroWidthGreenColorNoMarginSmallFont"
+            android:layout_marginStart="@dimen/_12sdp"
+            app:layout_constraintTop_toTopOf="@id/tvIdTicket"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

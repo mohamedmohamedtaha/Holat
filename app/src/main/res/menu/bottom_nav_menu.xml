@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/main_home"
+        android:icon="@drawable/home"
+        android:title="@string/main" />
+    <item
+        android:id="@+id/sama_fragment"
+        android:icon="@drawable/sama"
+        android:title="@string/title_sama" />
+    <item
+        android:title=""
+        android:id="@+id/complaintFragmentss"
+        />
+    <item
+        android:id="@+id/my_compliant_fragment"
+        android:icon="@drawable/orders"
+        android:title="@string/title_orders" />
+
+    <item
+        android:id="@+id/my_account"
+        android:icon="@drawable/my_account"
+        android:title="@string/title_my_account" />
+
+</menu>

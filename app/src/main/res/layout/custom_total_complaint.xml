@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_12sdp"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:layoutDirection="locale"
+    android:shadowColor="@color/textIcon"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="5dp"
+    app:strokeColor="@color/colorPrimary"
+    app:strokeWidth="0.5dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/man"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_118sdp"
+            android:background="@color/light_green"
+            android:scaleType="fitCenter"
+            android:src="@drawable/man"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTotalComplaint"
+            style="@style/TextViewWithZeroWidthGrayColor"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:text="@string/text_total_compliant"
+            app:layout_constraintStart_toEndOf="@id/man"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/includeNew"
+            layout="@layout/custom_text_tickets"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_6sdp"
+            app:layout_constraintStart_toEndOf="@id/man"
+            app:layout_constraintEnd_toStartOf="@id/includeUnderProcess"
+            app:layout_constraintTop_toBottomOf="@id/tvTotalComplaint" />
+
+        <include
+            android:id="@+id/includeUnderProcess"
+            layout="@layout/custom_text_tickets"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            app:layout_constraintStart_toEndOf="@id/includeNew"
+            app:layout_constraintEnd_toStartOf="@+id/includeClosed"
+            app:layout_constraintTop_toBottomOf="@id/tvTotalComplaint" />
+
+        <include
+            android:id="@+id/includeClosed"
+            layout="@layout/custom_text_tickets"
+            android:layout_width="0dp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_6sdp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/includeUnderProcess"
+            app:layout_constraintTop_toBottomOf="@id/tvTotalComplaint" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

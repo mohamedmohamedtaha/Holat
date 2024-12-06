@@ -17,9 +17,16 @@ import com.holat.login.R
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import com.holat.login.LoginActivity
 import com.holat.login.data.datastore.DataStoreViewModel
+import com.holat.login.models.ErrorResponse
 import com.holat.login.sheetdialog.UploadFileOrImageFragment
 import com.holat.login.utils.Validator
+import com.holat.login.utils.gotToSpecificActivity
+import com.holat.login.utils.showSnackBar
+import okhttp3.ResponseBody
 
 
 abstract class BaseBottomSheetDialogFragment : BottomSheetDialogFragment() {
@@ -149,4 +156,44 @@ abstract class BaseBottomSheetDialogFragment : BottomSheetDialogFragment() {
         imagePicker.setImagePickerResult(pickerResult)
         imagePicker.show(childFragmentManager, imagePicker.javaClass.simpleName)
     }
+    fun showError(code:Int, data: ResponseBody?) {
+        if (code == 401 || code == 403) {
+            dataStoreViewModel.deleteToken()
+            //  dataStoreViewModel.deleteUserData()
+            binding?.root?.showSnackBar(getString(R.string.err_session_expired))
+            requireActivity().gotToSpecificActivity(LoginActivity::class.java)
+            return
+        }
+
+        val gson = Gson()
+        val type = object : TypeToken<ErrorResponse>() {}.type
+        try {
+//            if (data.code() == 400){
+//                data.body()
+//            }
+            val errorResponse: ErrorResponse? = gson.fromJson(data?.charStream(), type)
+            // data.errorBody()?.contentType()
+            errorResponse?.errors.let {
+                it.toString()
+            }
+            if (errorResponse?.errors != null) {
+                requireView().showSnackBar(errorResponse.errors.toString())
+            } else
+                requireView().showSnackBar(errorResponse?.message.toString())
+//            if (errorResponse != null) {
+//                requireView().showSnackBar(errorResponse.message)
+//                if (errorResponse.details == TOKEN_EXPIRED) {
+//                    val intent = Intent(context, LoginActivity::class.java)
+//                    intent.putExtra(Constants.IS_REFRESH_TOKEN, true)
+//                    //or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK )
+//                    requireActivity().startActivity(intent)
+//                    return
+//                }
+//            }
+        } catch (ex: Exception) {
+            requireView().showSnackBar(ex.message.toString())
+        }
+    }
+
 }

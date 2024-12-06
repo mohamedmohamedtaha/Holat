@@ -69,6 +69,7 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.smart.mateial.spinner)
     implementation(libs.android.volley)
+    implementation(libs.github.lingver)
 
     // Import the BoM for Firebase
     implementation(platform(libs.firebase.bom)) // Import the Firebase BoM

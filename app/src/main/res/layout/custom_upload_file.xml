@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp"
+    android:shadowColor="@color/textIcon"
+    app:cardBackgroundColor="@color/light_green"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="5dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:strokeWidth="0.5dp">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraint"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_10sdp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/cardView">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imFile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/attachment" />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/delete" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvFileName"
+        style="@style/TextViewWithZeroWidthBlackColorNoMargin"
+        android:textStyle="bold"
+        android:gravity="start"
+        android:layout_marginEnd="@dimen/_4sdp"
+        app:layout_constraintStart_toEndOf="@id/imFile"
+        app:layout_constraintEnd_toStartOf="@+id/imDelete"
+        app:layout_constraintTop_toTopOf="@id/imFile"
+        tools:text="@string/file_name" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvFileSize"
+        style="@style/TextViewWithZeroWidthGrayColorSmallSizeNoMargen"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@id/imFile"
+        app:layout_constraintTop_toBottomOf="@id/tvFileName"
+        tools:text="@string/file_size" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+

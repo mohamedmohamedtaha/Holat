@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutParent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/_8sdp"
+    android:background="@drawable/bg_bottom_sheet_dialog_white"
+    android:descendantFocusability="afterDescendants"
+    app:behavior_peekHeight="@dimen/_200sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageViewCamera"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:scaleType="fitCenter"
+                android:textColor="@android:color/black"
+                android:src="@drawable/flag_english"
+
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewEnglish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/imageViewCamera"
+                android:text="@string/label_english"
+                android:padding="@dimen/_10sdp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/neo_sans_bold"
+                android:textSize="@dimen/_14ssp"  />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/colorPrimaryDark"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_20sdp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_20sdp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageViewGallery"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/flag_arabic" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewArabic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_arabic"
+                android:layout_toEndOf="@id/imageViewGallery"
+                android:padding="@dimen/_10sdp"
+                android:textStyle="bold"
+                android:gravity="end"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/neo_sans_bold"
+                android:textSize="@dimen/_14ssp" />
+        </RelativeLayout>
+
+    </LinearLayout>

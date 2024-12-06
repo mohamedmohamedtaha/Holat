@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_navigation"
+    app:startDestination="@+id/main_home">
+
+    <fragment
+        android:id="@+id/main_home"
+        android:name="com.holat.holat.ui.home.HomeFragment"
+        android:label="@string/main"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_main_home_to_notifications_fragment"
+            app:destination="@id/notifications_fragment" />
+        <action
+            android:id="@+id/action_main_home_to_informationBankFragment"
+            app:destination="@id/informationBankFragment" />
+        <action
+            android:id="@+id/action_main_home_to_contactUsFragment"
+            app:destination="@id/contactUsFragment" />
+        <action
+            android:id="@+id/action_main_home_to_ticketDetailsFragment"
+            app:destination="@id/compliantDetailsFragment" />
+        <action
+            android:id="@+id/action_main_home_to_my_account"
+            app:destination="@id/my_account" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/notifications_fragment"
+        android:name="com.holat.holat.ui.home.notifications.NotificationsFragment"
+        android:label="@string/title_my_account"
+        tools:layout="@layout/fragment_notifications" >
+        <action
+            android:id="@+id/action_notifications_fragment_to_notificationDetailsFragment"
+            app:destination="@id/notificationDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/my_account"
+        android:name="com.holat.holat.ui.profile.fragments.MyAccountFragment"
+        android:label="MyAccountFragment"
+        tools:layout="@layout/fragment_my_account">
+        <action
+            android:id="@+id/action_my_account_to_languageFragment"
+            app:destination="@id/languageFragment" />
+        <action
+            android:id="@+id/action_my_account_to_notifications_fragment"
+            app:destination="@id/notifications_fragment" />
+        <action
+            android:id="@+id/action_my_account_to_contactUsFragment"
+            app:destination="@id/contactUsFragment" />
+        <action
+            android:id="@+id/action_my_account_to_updateClientProfileFragment"
+            app:destination="@id/updateClientProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sama_fragment"
+        android:name="com.holat.holat.ui.home.sama.SamaFragment"
+        android:label="fragment_sama"
+        tools:layout="@layout/fragment_sama" >
+        <action
+            android:id="@+id/action_sama_fragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_sama_fragment_to_informationBankFragment"
+            app:destination="@id/informationBankFragment" />
+        <action
+            android:id="@+id/action_sama_fragment_to_contactUsFragment"
+            app:destination="@id/contactUsFragment" />
+        <action
+            android:id="@+id/action_sama_fragment_to_notifications_fragment"
+            app:destination="@id/notifications_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationDetailsFragment"
+        android:name="com.holat.holat.ui.home.notifications.NotificationDetailsFragment"
+        android:label="fragment_notification_details"
+        tools:layout="@layout/fragment_notification_details" >
+<!--        <argument-->
+<!--            android:name="dataTicket"-->
+<!--            app:argType="com.example.holat.data.models.tickets.DataTicket" />-->
+        <argument
+            android:name="dataTicket"
+            app:argType="com.holat.holat.data.models.tickets.DataTicket" />
+    </fragment>
+    <fragment
+        android:id="@+id/my_compliant_fragment"
+        android:name="com.holat.holat.ui.home.compliants.fragment.MyComplaintsFragment"
+        android:label="fragment_orders"
+        tools:layout="@layout/fragment_my_compliants" >
+        <action
+            android:id="@+id/action_orders_fragment_to_notifications_fragment"
+            app:destination="@id/notifications_fragment" />
+        <action
+            android:id="@+id/action_orders_fragment_to_ticketDetailsFragment"
+            app:destination="@id/compliantDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.holat.holat.ui.home.sama.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/informationBankFragment"
+        android:name="com.holat.holat.ui.home.sama.InformationBankFragment"
+        android:label="fragment_information_bank"
+        tools:layout="@layout/fragment_information_bank" />
+    <fragment
+        android:id="@+id/contactUsFragment"
+        android:name="com.holat.holat.ui.home.sama.ContactUsFragment"
+        android:label="fragment_contact_us"
+        tools:layout="@layout/fragment_contact_us" />
+    <dialog
+        android:id="@+id/languageFragment"
+        android:name="com.holat.holat.ui.home.sheetdialog.LanguageDialog"
+        android:label="fragment_language"
+        tools:layout="@layout/fragment_language" />
+    <fragment
+        android:id="@+id/compliantDetailsFragment"
+        android:name="com.holat.holat.ui.home.compliants.fragment.CompliantDetailsFragment"
+        android:label="fragment_ticket_details"
+        tools:layout="@layout/fragment_compliant_details" >
+        <argument
+            android:name="dataTicket"
+            app:argType="com.holat.holat.data.models.tickets.DataTicket" />
+        <action
+            android:id="@+id/action_ticketDetailsFragment_to_responsesFragment"
+            app:destination="@id/responsesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/complaintFragment"
+        android:name="com.holat.holat.ui.home.compliants.fragment.AddComplaintFragment"
+        android:label="fragment_complaint"
+        tools:layout="@layout/fragment_add_complaint" >
+        <action
+            android:id="@+id/action_complaintFragment_to_lookUpSearchFragment"
+            app:destination="@id/lstWithSearchFragment" />
+        <action
+            android:id="@+id/action_complaintFragment_to_thanksFragment"
+            app:destination="@id/thanksFragment" />
+        <action
+            android:id="@+id/action_complaintFragment_to_lookUpSearchFragment2"
+            app:destination="@id/lookUpSearchFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/uploadFileOrImageFragment"
+        android:name="com.holat.login.sheetdialog.UploadFileOrImageFragment"
+        android:label="fragment_upload_file_or_image"
+        tools:layout="@layout/fragment_upload_file_or_image" />
+    <dialog
+        android:id="@+id/lstWithSearchFragment"
+        android:name="com.holat.holat.ui.home.sheetdialog.ListWithSearchFragment"
+        android:label="LookUpSearchFragment"
+        tools:layout="@layout/fragment_list_with_search"/>
+    <dialog
+        android:id="@+id/thanksFragment"
+        android:name="com.holat.holat.ui.home.sheetdialog.ThanksFragment"
+        android:label="fragment_thanks"
+        tools:layout="@layout/fragment_thanks" >
+        <argument
+            android:name="ticketNumber"
+            app:argType="string" />
+    </dialog>
+    <fragment
+        android:id="@+id/responsesFragment"
+        android:name="com.holat.holat.ui.home.responses.fragments.ResponsesFragment"
+        android:label="fragment_responses"
+        tools:layout="@layout/fragment_responses" >
+        <argument
+            android:name="dataTikcet"
+            app:argType="com.holat.holat.data.models.tickets.DataTicket" />
+        <action
+            android:id="@+id/action_responsesFragment_to_sendCommentFragment"
+            app:destination="@id/sendCommentFragment" />
+        <action
+            android:id="@+id/action_responsesFragment_to_sendEscalationFragment"
+            app:destination="@id/sendEscalationFragment" />
+        <action
+            android:id="@+id/action_responsesFragment_to_ratingFragment"
+            app:destination="@id/ratingFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/sendCommentFragment"
+        android:name="com.holat.holat.ui.home.responses.fragments.SendCommentFragment"
+        android:label="SendCommentFragment"
+        tools:layout="@layout/fragment_send_comment">
+        <argument
+            android:name="ticketId"
+            app:argType="long" />
+    </dialog>
+    <dialog
+        android:id="@+id/sendEscalationFragment"
+        android:name="com.holat.holat.ui.home.responses.fragments.SendEscalationFragment"
+        android:label="fragment_send_escalation"
+        tools:layout="@layout/fragment_send_escalation" >
+        <argument
+            android:name="ticketId"
+            app:argType="long" />
+    </dialog>
+    <fragment
+        android:id="@+id/ratingFragment"
+        android:name="com.holat.holat.ui.home.responses.fragments.RatingFragment"
+        android:label="RatingFragment"
+        tools:layout="@layout/fragment_rating">
+        <argument
+            android:name="ticketId"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateClientProfileFragment"
+        android:name="com.holat.holat.ui.profile.fragments.UpdateClientProfileFragment"
+        android:label="UpdateClientProfileFragment"
+        tools:layout="@layout/fragment_update_client_profile"/>
+    <dialog
+        android:id="@+id/lookUpSearchFragment"
+        android:name="com.holat.holat.ui.dynamic.fragments.LookUpSearchFragment"
+        android:label="LookUpSearchFragment" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="depended_on"
+            app:argType="string" />
+    </dialog>
+
+</navigation>

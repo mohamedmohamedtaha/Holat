@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_5sdp"
+    android:layoutDirection="locale"
+    android:layout_gravity="center"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/custom_sheet_dialog_light_green_all">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvNumbers"
+        tools:text="12"
+        style="@style/TextViewWithZeroWidthGreenColorMeduimSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitle"
+        tools:text="@string/new_"
+        style="@style/TextViewWithZeroWidthBlackColorNoMarginMediumFont"
+        app:layout_constraintTop_toBottomOf="@id/tvNumbers"
+        app:layout_constraintStart_toStartOf="@id/tvNumbers"
+        app:layout_constraintEnd_toEndOf="@id/tvNumbers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</androidx.constraintlayout.widget.ConstraintLayout>

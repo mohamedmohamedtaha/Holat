@@ -3,7 +3,9 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.kotlin.kapt)
-
+    alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.dev.tools.ksp)
+    alias(libs.plugins.safe.args)
 }
 
 android {
@@ -39,6 +41,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
 }
 
 dependencies {
@@ -46,6 +49,10 @@ dependencies {
     implementation(libs.androidx.core.ktx)
 //    implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(libs.rerofit2)
+    implementation(libs.retrofit2.converter.gson)
+    implementation(libs.retrofit2.adapter)
+    implementation(libs.okhttp3.logging.intercepter)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
@@ -54,6 +61,24 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.dagger.hilt.android)
     kapt(libs.dagger.hilt.compiler.ksp)
+    implementation(libs.datastore.preferences)
+    implementation(libs.coil.kt)
+    implementation(libs.font.dp)
+    implementation(libs.font.sp)
+    implementation(libs.phone.number.picker)
+    implementation(libs.android.image.cropper)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.country.code.picker)
+    implementation(libs.glide)
+    implementation(libs.paging.runtime)
+    kapt(libs.glide.compiler)
+    implementation(libs.github.lingver)
+    implementation(libs.lifecycle.livedata.ktx)
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.smart.mateial.spinner)
+    implementation(libs.android.volley)
+
     implementation(project(":login"))
 
 }

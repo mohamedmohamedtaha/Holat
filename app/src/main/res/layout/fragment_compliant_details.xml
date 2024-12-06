@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_10sdp"
+    android:layoutDirection="locale"
+    tools:context=".ui.home.compliants.fragment.CompliantDetailsFragment">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:shadowColor="@color/textIcon"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeWidth="0.5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:padding="@dimen/_5sdp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/saving"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/saving_green"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icon_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_message"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvResponse"
+                style="@style/TextViewWithZeroWidthGreenColorSmallSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="@id/icon_message"
+                app:layout_constraintEnd_toStartOf="@id/icon_message"
+                app:layout_constraintTop_toTopOf="@id/icon_message"
+                tools:text="12345678" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvIdTicket"
+                style="@style/TextViewWithZeroWidthBlackColorNoMargin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                app:layout_constraintStart_toEndOf="@id/saving"
+                app:layout_constraintTop_toTopOf="@id/saving"
+                tools:text="12345678" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDate"
+                style="@style/TextViewWithZeroWidthBlackColorNoMarginSmallFont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                app:layout_constraintStart_toEndOf="@id/saving"
+                app:layout_constraintTop_toBottomOf="@id/tvIdTicket"
+                tools:text="25/12/2023" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTime"
+                style="@style/TextViewWithZeroWidthGreenColorNoMarginSmallFont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                app:layout_constraintStart_toEndOf="@id/tvDate"
+                app:layout_constraintTop_toBottomOf="@id/tvIdTicket"
+                tools:text="3:00pm" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:background="@color/colorPrimary"
+                app:layout_constraintBottom_toTopOf="@+id/circleGreen"
+                app:layout_constraintStart_toStartOf="@+id/saving"
+                app:layout_constraintTop_toBottomOf="@+id/saving" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/circleGreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:src="@drawable/circle_green"
+                app:layout_constraintStart_toStartOf="@+id/saving"
+                app:layout_constraintTop_toBottomOf="@id/view" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSector"
+                style="@style/TextViewWithZeroWidthBlackColorNoMargin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:text="@string/sector"
+                app:layout_constraintBottom_toBottomOf="@+id/circleGreen"
+                app:layout_constraintStart_toEndOf="@id/circleGreen"
+                app:layout_constraintTop_toTopOf="@id/circleGreen" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSectorValue"
+                style="@style/TextViewWithZeroWidthGrayColorNoMargen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/circleGreen"
+                app:layout_constraintStart_toEndOf="@id/tvSector"
+                app:layout_constraintTop_toTopOf="@id/circleGreen" />
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:background="@color/colorPrimary"
+                app:layout_constraintBottom_toTopOf="@+id/circleGreen1"
+                app:layout_constraintStart_toStartOf="@+id/saving"
+                app:layout_constraintTop_toBottomOf="@+id/circleGreen" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/circleGreen1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:src="@drawable/circle_green"
+                app:layout_constraintStart_toStartOf="@id/saving"
+                app:layout_constraintTop_toBottomOf="@id/circleGreen" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvProduct"
+                style="@style/TextViewWithZeroWidthBlackColorNoMargin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:text="@string/product"
+                app:layout_constraintBottom_toBottomOf="@+id/circleGreen1"
+                app:layout_constraintStart_toEndOf="@id/circleGreen1"
+                app:layout_constraintTop_toTopOf="@id/circleGreen1" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvProductValue"
+                style="@style/TextViewWithZeroWidthGrayColorNoMargen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/circleGreen1"
+                app:layout_constraintStart_toStartOf="@id/tvSectorValue"
+                app:layout_constraintTop_toTopOf="@id/circleGreen1" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:background="@color/colorPrimary"
+                app:layout_constraintBottom_toTopOf="@+id/circleGreen2"
+                app:layout_constraintStart_toStartOf="@+id/saving"
+                app:layout_constraintTop_toBottomOf="@+id/circleGreen1" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/circleGreen2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:src="@drawable/circle_green"
+                app:layout_constraintStart_toStartOf="@id/saving"
+                app:layout_constraintTop_toBottomOf="@id/view2" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvParty"
+                style="@style/TextViewWithZeroWidthBlackColorNoMargin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:text="@string/party"
+                app:layout_constraintBottom_toBottomOf="@+id/circleGreen2"
+                app:layout_constraintStart_toEndOf="@id/circleGreen2"
+                app:layout_constraintTop_toTopOf="@id/circleGreen2" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPartyValue"
+                style="@style/TextViewWithZeroWidthGrayColorNoMargen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/circleGreen2"
+                app:layout_constraintStart_toStartOf="@id/tvSectorValue"
+                app:layout_constraintTop_toTopOf="@id/circleGreen2" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDetails"
+                style="@style/TextViewWithZeroWidthGrayColorSmallSizeNoMargen"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="start"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/circleGreen2"
+                app:layout_constraintTop_toBottomOf="@id/tvParty"
+                tools:text="khkhkjhkjhkjhkjhkjhkjhkjhkjhkjhkjhkjh" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:background="@color/colorPrimary"
+                app:layout_constraintBottom_toTopOf="@+id/circleGreen3"
+                app:layout_constraintStart_toStartOf="@+id/saving"
+                app:layout_constraintTop_toBottomOf="@+id/circleGreen2" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/circleGreen3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:src="@drawable/circle_green"
+                app:layout_constraintStart_toStartOf="@id/saving"
+                app:layout_constraintTop_toBottomOf="@id/view3"
+                app:layout_constraintBottom_toBottomOf="@id/tvDetails" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPartyResponse"
+                style="@style/TextViewWithZeroWidthBlackColorNoMargin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:text="@string/party_response"
+                app:layout_constraintStart_toEndOf="@id/circleGreen3"
+                app:layout_constraintTop_toBottomOf="@id/tvDetails" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSectorReplay"
+                style="@style/TextViewWithZeroWidthGrayColorSmallSizeNoMargen"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="start"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/circleGreen3"
+                app:layout_constraintTop_toBottomOf="@id/tvPartyResponse"
+                tools:text="khkhkjhkjhkjhkjhkjhkjhkjhkjhkjhkjhkjh" />
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:background="@color/colorPrimary"
+                app:layout_constraintBottom_toTopOf="@+id/circleGreen4"
+                app:layout_constraintStart_toStartOf="@+id/saving"
+                app:layout_constraintTop_toBottomOf="@+id/circleGreen3" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/circleGreen4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/circle_green"
+                app:layout_constraintBottom_toBottomOf="@id/tvSectorReplay"
+                android:layout_marginStart="@dimen/_5sdp"
+                app:layout_constraintStart_toStartOf="@id/saving"
+                app:layout_constraintTop_toBottomOf="@id/view4"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewFiles"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        tools:listitem="@layout/custom_files" />
+</androidx.constraintlayout.widget.ConstraintLayout>

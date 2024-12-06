@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/guideLineEnd"
+        android:background="@drawable/bg_lite_green_all"
+        app:layout_constraintStart_toEndOf="@id/guideLineStart"
+        app:layout_constraintTop_toBottomOf="@id/layoutDetails">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/_51sdp"
+            android:layout_height="@dimen/_51sdp"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_12sdp"
+            app:layout_constraintEnd_toStartOf="@id/guideLineEnd"
+            app:layout_constraintStart_toEndOf="@id/guideLineStart"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/receipt" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAddAttachment"
+            style="@style/MatchParentWidthWrapContent.TextView"
+            android:text="@string/add_attachment"
+            android:gravity="center"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvData3"
+            android:gravity="center"
+            style="@style/MatchParentWidthWrapContent.TextViewGray"
+            android:text="@string/upload_attachment" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/selectedFileBtn"
+            style="@style/AppCompatButtonGreen"
+            android:layout_width="wrap_content"
+            android:paddingEnd="@dimen/_54sdp"
+            android:paddingStart="@dimen/_54sdp"
+            android:layout_gravity="center"
+            android:text="@string/select_files"
+            app:layout_constraintEnd_toStartOf="@id/guideLineEnd"
+            app:layout_constraintStart_toEndOf="@id/guideLineStart"
+            app:layout_constraintTop_toBottomOf="@id/tvCode" />
+    </androidx.appcompat.widget.LinearLayoutCompat>

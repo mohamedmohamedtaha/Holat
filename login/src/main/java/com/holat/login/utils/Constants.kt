@@ -18,7 +18,7 @@ object Constants {
     const val RP_ID = "2312"
     var LANGUAGE_CODE = "ar"
     const val IS_REFRESH_TOKEN = "is_refresh_token"
-    const val NEW_PACKAGE = "com.holat.holat.home.activity."
+    const val NEW_PACKAGE = "com.holat.holat.ui.home.activity."
     const val EncryptionKey = "PdSgVkYp3s6v9y\$B?E(H+MbQeThWmZq4t7w!z%C*F)J@NcRfUjXn2r5u8x/A?D(G"
     const val SENDER = 0
     const val RECEIVER = 1

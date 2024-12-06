@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_bottom_sheet_dialog_transberant"
+            android:clickable="true"
+            android:fillViewport="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideLineStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.01" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideLineEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.99" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideLineTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.01" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideLineBottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.97" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutSearch"
+                style="@style/textInputLayout"
+                android:layout_marginTop="@dimen/_3sdp"
+                app:layout_constraintEnd_toStartOf="@id/guideLineEnd"
+                app:layout_constraintStart_toEndOf="@id/guideLineStart"
+                app:layout_constraintTop_toBottomOf="@id/guideLineTop">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextSearch"
+                    style="@style/matchAndWrapContent.editText"
+                    android:hint="@string/search"
+                    android:visibility="gone"
+                    android:inputType="text"
+                    app:layout_constraintEnd_toStartOf="@id/guideLineEnd"
+                    app:layout_constraintStart_toEndOf="@id/guideLineStart" />
+
+                <SearchView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/searchView"
+                    android:queryHint="@string/search"
+                    android:iconifiedByDefault="false"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="10dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_7sdp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/textInputLayoutSearch"
+                app:layout_constraintEnd_toStartOf="@id/guideLineEnd"
+                app:layout_constraintTop_toTopOf="@id/textInputLayoutSearch" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:background="@color/colorPrimary"
+                app:layout_constraintBottom_toTopOf="@id/guideLineBottom"
+                app:layout_constraintEnd_toStartOf="@id/recyclerView"
+                app:layout_constraintStart_toEndOf="@id/guideLineStart"
+                app:layout_constraintTop_toBottomOf="@id/textInputLayoutSearch" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toTopOf="@id/guideLineBottom"
+                app:layout_constraintEnd_toStartOf="@id/guideLineEnd"
+                app:layout_constraintStart_toEndOf="@id/view"
+                app:layout_constraintTop_toBottomOf="@id/textInputLayoutSearch"
+                app:layout_constraintVertical_bias="0.0"
+                tools:listitem="@layout/custom_search" />
+
+            <include
+                android:id="@+id/includeCustomEmptySearch"
+                layout="@layout/custom_empty_list"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                app:layout_constraintBottom_toTopOf="@id/guideLineBottom"
+                app:layout_constraintEnd_toStartOf="@id/guideLineEnd"
+                app:layout_constraintStart_toEndOf="@id/guideLineStart"
+                app:layout_constraintTop_toBottomOf="@id/textInputLayoutSearch" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>

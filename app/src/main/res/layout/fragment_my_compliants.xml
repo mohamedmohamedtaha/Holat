@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="locale">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bottom_green_sheet_dialog_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etSearch"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_margin="@dimen/_12sdp"
+            android:background="@drawable/bg_bottom_sheet_dialog_white_all"
+            android:hint="@string/number_compliant"
+            android:inputType="number"
+            android:textColor="@android:color/black"
+            android:padding="@dimen/_12sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etDate"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_margin="@dimen/_12sdp"
+            android:padding="@dimen/_12sdp"
+            android:background="@drawable/bg_bottom_sheet_dialog_white_all"
+            android:hint="@string/date"
+            android:drawableEnd="@drawable/ic_calendar"
+            android:focusable="false"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etSearch" />
+        <!--        <com.google.android.material.textfield.TextInputLayout-->
+        <!--            android:id="@+id/layoutSearch"-->
+        <!--            style="@style/MatchParentWidthWrapContent.TextWhiteBackground"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent">-->
+
+        <!--            <com.google.android.material.textfield.TextInputEditText-->
+        <!--                android:id="@+id/searchEt"-->
+        <!--                style="@style/MatchParentWidthWrapContent.TextInputEditText"-->
+        <!--                android:digits="@string/digits_numbers"-->
+        <!--                android:hint="@string/search"-->
+        <!--                android:inputType="number"-->
+        <!--                android:textColorHint="@color/primaryText" />-->
+
+        <!--        </com.google.android.material.textfield.TextInputLayout>-->
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/searchBtn"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_search"
+            app:layout_constraintBottom_toBottomOf="@id/etSearch"
+            app:layout_constraintEnd_toEndOf="@id/etSearch"
+            app:layout_constraintTop_toTopOf="@id/etSearch" />
+        <!--        <com.google.android.material.textfield.TextInputLayout-->
+        <!--            android:id="@+id/layoutDateOfComplaint"-->
+        <!--            style="@style/MatchParentWidthWrapContent.TextWhiteBackground"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/etSearch"-->
+        <!--            tools:layout_editor_absoluteY="229dp">-->
+
+        <!--            <com.google.android.material.textfield.TextInputEditText-->
+        <!--                android:id="@+id/dateEt"-->
+        <!--                style="@style/MatchParentWidthWrapContent.TextInputEditText"-->
+        <!--                android:focusable="false"-->
+        <!--                android:drawableEnd="@drawable/ic_calendar"-->
+        <!--                android:hint="@string/date"-->
+        <!--                android:textColorHint="@color/primaryText" />-->
+        <!--        </com.google.android.material.textfield.TextInputLayout>-->
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_21sdp"
+            android:background="@drawable/bg_buttons_white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/etDate"
+            app:layout_constraintStart_toStartOf="@+id/etDate"
+            app:layout_constraintTop_toBottomOf="@+id/etDate">
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                style="@style/StatusRadioGroup"
+                android:checked="true"
+                android:text="@string/new_" />
+
+            <RadioButton
+                android:id="@+id/radioButton4"
+                style="@style/StatusRadioGroup"
+                android:text="@string/under_apply" />
+
+            <RadioButton
+                android:id="@+id/radioButton5"
+                style="@style/StatusRadioGroup"
+                android:text="@string/close" />
+
+        </RadioGroup>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_12sdp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraint"
+        tools:listitem="@layout/custom_white_complaint" />
+</androidx.constraintlayout.widget.ConstraintLayout>

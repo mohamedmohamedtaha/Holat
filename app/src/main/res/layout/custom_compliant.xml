@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    android:id="@+id/cardView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp"
+    app:strokeColor="@color/colorPrimary"
+    app:strokeWidth="0.5dp"
+    app:cardBackgroundColor="@color/colorPrimaryDark"
+    android:layoutDirection="locale"
+    android:shadowColor="@color/textIcon"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="5dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="@dimen/_5sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_12sdp">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/saving"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/saving" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvIdTicket"
+            tools:text="12345678"
+            style="@style/TextViewWithZeroWidthWhiteColorNoMargin"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintTop_toTopOf="@id/saving"
+            app:layout_constraintStart_toEndOf="@id/saving"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDate"
+            tools:text="25/12/2023"
+            style="@style/TextViewWithZeroWidthWhiteColorNoMarginSmallFont"
+            android:layout_marginStart="@dimen/_12sdp"
+            app:layout_constraintTop_toBottomOf="@id/tvIdTicket"
+            app:layout_constraintStart_toEndOf="@id/saving"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/circleYellow"
+            android:layout_marginTop="@dimen/_22sdp"
+            app:layout_constraintTop_toBottomOf="@id/tvDate"
+            app:layout_constraintStart_toEndOf="@id/saving"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/circle_yellow" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSector"
+            android:text="@string/sector"
+            style="@style/TextViewWithZeroWidthWhiteColorNoMargin"
+            android:layout_marginStart="@dimen/_12sdp"
+            app:layout_constraintTop_toTopOf="@id/circleYellow"
+            app:layout_constraintBottom_toBottomOf="@+id/circleYellow"
+            app:layout_constraintStart_toEndOf="@id/circleYellow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSectorValue"
+            tools:text="القطاع البنوك"
+            style="@style/TextViewWithZeroWidthWhiteColorNoMarginSmallFont"
+            android:layout_marginStart="@dimen/_12sdp"
+            app:layout_constraintTop_toTopOf="@id/circleYellow"
+            app:layout_constraintBottom_toBottomOf="@+id/circleYellow"
+            app:layout_constraintStart_toEndOf="@id/tvSector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/circleYellow2"
+            android:layout_marginTop="@dimen/_22sdp"
+            app:layout_constraintTop_toBottomOf="@id/circleYellow"
+            app:layout_constraintStart_toEndOf="@id/saving"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/circle_yellow" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvProduct"
+            android:text="@string/product"
+            style="@style/TextViewWithZeroWidthWhiteColorNoMargin"
+            android:layout_marginStart="@dimen/_12sdp"
+            app:layout_constraintTop_toTopOf="@id/circleYellow2"
+            app:layout_constraintBottom_toBottomOf="@+id/circleYellow2"
+            app:layout_constraintStart_toEndOf="@id/circleYellow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvProductValue"
+            tools:text="القطاع البنوك"
+            style="@style/TextViewWithZeroWidthWhiteColorNoMarginSmallFont"
+            android:layout_marginStart="@dimen/_12sdp"
+            app:layout_constraintTop_toTopOf="@id/circleYellow2"
+            app:layout_constraintBottom_toBottomOf="@+id/circleYellow2"
+            app:layout_constraintStart_toEndOf="@id/tvProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTime"
+            tools:text="3:00pm"
+            style="@style/TextViewWithZeroWidthWhiteColorNoMarginSmallFont"
+            android:layout_marginEnd="@dimen/_12sdp"
+            app:layout_constraintTop_toTopOf="@id/tvIdTicket"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

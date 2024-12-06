@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="locale"
+    android:clickable="true"
+    android:focusable="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".login.ui.home.fragments.MyAccountFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_60sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:shadowColor="@color/textIcon"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:strokeWidth="0.5dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvNameUser"
+                        style="@style/TextViewWithZeroWidthBlackColor"
+                        android:layout_marginStart="@dimen/_82sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="محمد محمد طه" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvCode"
+                        style="@style/TextView"
+                        android:padding="@dimen/_2sdp"
+                        android:background="@drawable/bg_green"
+                        app:layout_constraintStart_toStartOf="@id/tvNameUser"
+                        app:layout_constraintTop_toBottomOf="@id/tvNameUser"
+                        tools:text="1235478" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvType"
+                        style="@style/TextView"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:padding="@dimen/_2sdp"
+                        android:background="@drawable/bg_green"
+                        app:layout_constraintStart_toEndOf="@id/tvCode"
+                        app:layout_constraintTop_toBottomOf="@id/tvNameUser"
+                        tools:text="مقيم" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imGender"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_man"
+                        app:layout_constraintStart_toStartOf="@id/tvCode"
+                        app:layout_constraintTop_toBottomOf="@id/tvCode" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvGender"
+                        style="@style/TextViewWithZeroWidthGrayColor"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:layout_marginBottom="@dimen/_12sdp"
+                        app:layout_constraintStart_toEndOf="@id/imGender"
+                        app:layout_constraintTop_toBottomOf="@id/tvCode"
+                        tools:text="ذكر" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imDate"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:layout_marginBottom="@dimen/_12sdp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_calender"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tvGender"
+                        app:layout_constraintTop_toBottomOf="@id/tvCode" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDateOdBirth"
+                        style="@style/TextViewWithZeroWidthGrayColor"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:layout_marginBottom="@dimen/_12sdp"
+                        app:layout_constraintStart_toEndOf="@id/imDate"
+                        app:layout_constraintTop_toBottomOf="@id/tvCode"
+                        tools:text="23/10/2023" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:shadowColor="@color/textIcon"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardView1"
+                app:strokeWidth="0.5dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvAddress"
+                        style="@style/TextViewWithZeroWidthBlackColor"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:text="@string/address"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvGetAddress"
+                        style="@style/TextViewWithZeroWidthGrayColorNoMargen"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvAddress"
+                        tools:text="الرياض- المملكة العرببة السعودية" />
+
+                    <View
+                        android:id="@+id/view1"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="@color/lightGray"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvGetAddress" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvPhone"
+                        style="@style/TextViewWithZeroWidthBlackColor"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:text="@string/phone_number"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvGetAddress" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvGetPhone"
+                        style="@style/TextViewWithZeroWidthGrayColorNoMargen"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvPhone"
+                        tools:text="+966535020871" />
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="@color/lightGray"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvGetPhone" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvChangePassword"
+                        style="@style/TextViewWithZeroWidthBlackColor"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:text="@string/change_password"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvGetPhone" />
+
+                    <View
+                        android:id="@+id/view3"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="@color/lightGray"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvChangePassword" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvNotification"
+                        style="@style/TextViewWithZeroWidthBlackColor"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:text="@string/notification"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view3" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextViewWithZeroWidthGrayColorNoMargen"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:layout_marginBottom="@dimen/_12sdp"
+                        android:gravity="start"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvNotification"
+                        tools:text="نحن ندرك أهمية خصوصيتك وتجربتك الضخصية عند استخدام .............................................." />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_12sdp"
+                android:shadowColor="@color/textIcon"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardView2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:cardBackgroundColor="@android:color/white"
+                app:strokeWidth="0.5dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/_15sdp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvControlYourData"
+                        style="@style/TextViewWithZeroWidthGrayColorNoMargen"
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:text="@string/control_your_data"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvChangeData"
+                        style="@style/TextViewWithZeroWidthBlackColor"
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:text="@string/change_information"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvControlYourData" />
+
+                    <View
+                        android:id="@+id/view4"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="@color/lightGray"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvChangeData" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvChangeLanguage"
+                        style="@style/TextViewWithZeroWidthBlackColor"
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:text="@string/change_language"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view4" />
+
+                    <View
+                        android:id="@+id/view5"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="@color/lightGray"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvChangeLanguage" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvContactUs"
+                        style="@style/TextViewWithZeroWidthBlackColor"
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:text="@string/contact_us"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view5" />
+
+                    <View
+                        android:id="@+id/view6"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="@color/lightGray"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvContactUs" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvLogOut"
+                        style="@style/TextViewWithZeroWidthBlackColor"
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:text="@string/logout"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view6" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:background="@drawable/bg_bottom_dialog_green"
+            android:scaleType="fitCenter"
+            android:src="@drawable/my_account"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideLine" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideLine"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.08" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
