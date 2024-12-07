@@ -5,6 +5,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -14,15 +15,21 @@ import com.holat.holat.R
 import com.holat.holat.databinding.FragmentLookupSearchBinding
 import com.holat.holat.ui.home.adapter.SearchAdapter
 import com.holat.holat.ui.home.compliants.fragment.ALL_TICKET_TYPES
+import com.holat.holat.ui.home.compliants.fragment.CITY_ID
+import com.holat.holat.ui.home.compliants.fragment.COUNTRY_ID
+import com.holat.holat.ui.home.compliants.fragment.HOSPITAL_ID
 import com.holat.holat.ui.home.compliants.fragment.MAIN_REASON_ID
+import com.holat.holat.ui.home.compliants.fragment.REGION_ID
 import com.holat.holat.ui.home.compliants.fragment.SUB_REASON_ID
 import com.holat.holat.ui.home.compliants.fragment.SUB_SUB_REASON_ID
 import com.holat.holat.ui.home.compliants.fragment.SUB_SUB_SUB_REASON_ID
 import com.holat.holat.ui.home.compliants.viewmodel.CompliantViewModel
+import com.holat.holat.ui.profile.viewmodel.ClientProfileViewModel
 import com.holat.login.base.BaseBottomSheetDialogFragment
 import com.holat.login.models.LookUpModel
 import com.holat.login.network.NetworkResult
 import com.holat.login.utils.Constants
+import com.holat.login.utils.changeLanguage
 import com.holat.login.utils.listener.ClickListener
 import com.yariksoffice.lingver.Lingver
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,6 +42,7 @@ const val LookUpSearchFragment_FRAGMENT_DATA = "LookUpSearchFragment_FRAGMENT_DA
 class LookUpSearchFragment : BaseBottomSheetDialogFragment(), View.OnClickListener {
     private lateinit var binding: FragmentLookupSearchBinding
     private val compliantViewModel by activityViewModels<CompliantViewModel>()
+    private val clientProfileViewModel by viewModels<ClientProfileViewModel>()
     private val args: LookUpSearchFragmentArgs by navArgs()
     val data = ArrayList<LookUpModel>()
 
@@ -81,9 +89,13 @@ class LookUpSearchFragment : BaseBottomSheetDialogFragment(), View.OnClickListen
         when (endPoint) {
             ALL_TICKET_TYPES -> allTicketType()
             MAIN_REASON_ID -> mainReason()
-            SUB_REASON_ID -> subSubReasons(1,id)
-            SUB_SUB_REASON_ID -> subSubReasons(1,id)
-            SUB_SUB_SUB_REASON_ID -> subSubReasons(1,id)
+            SUB_REASON_ID -> subReasons(1, id)
+            SUB_SUB_REASON_ID -> subSubReasons(1, id)
+            SUB_SUB_SUB_REASON_ID -> subSubSubReasons(1, id)
+            COUNTRY_ID -> getAllCountries()
+            REGION_ID -> getAllRegions(id)
+            CITY_ID -> getAllCities(id,id)
+//            HOSPITAL_ID->
         }
 
     }
@@ -149,13 +161,11 @@ class LookUpSearchFragment : BaseBottomSheetDialogFragment(), View.OnClickListen
 
                         is NetworkResult.Success -> {
                             hideProgressBar()
-                            val currentLanguage = Lingver.getInstance().getLanguage()
                             it.data.forEach { lookUp ->
                                 data.add(
                                     LookUpModel(
                                         lookUpListId = lookUp.id,
-                                        listName = if (currentLanguage == Constants.AR_LANGUAGE) lookUp.titleAr else
-                                            lookUp.titleEn
+                                        listName = changeLanguage(lookUp.titleAr, lookUp.titleEn)
                                     )
                                 )
                             }
@@ -191,28 +201,16 @@ class LookUpSearchFragment : BaseBottomSheetDialogFragment(), View.OnClickListen
                 }
 
                 is NetworkResult.Success -> {
-                    val mainReasonsText = mutableListOf<Any>()
-                    it.data.forEach { title ->
-                        val currentLanguage = Lingver.getInstance().getLanguage()
-                        if (currentLanguage == Constants.AR_LANGUAGE) {
-                            mainReasonsText.add(title.titleAr)
-                        } else {
-                            mainReasonsText.add(title.titleEn)
-                        }
-                    }
                     hideProgressBar()
-                    val currentLanguage = Lingver.getInstance().getLanguage()
                     it.data.forEach { lookUp ->
                         data.add(
                             LookUpModel(
                                 lookUpListId = lookUp.id,
-                                listName = if (currentLanguage == Constants.AR_LANGUAGE) lookUp.titleAr else
-                                    lookUp.titleEn
+                                listName = changeLanguage(lookUp.titleAr, lookUp.titleEn)
                             )
                         )
                     }
                     initRecyclerView(data)
-                    hideProgressBar()
                 }
 
                 is NetworkResult.Error -> {
@@ -296,24 +294,12 @@ class LookUpSearchFragment : BaseBottomSheetDialogFragment(), View.OnClickListen
                 }
 
                 is NetworkResult.Success -> {
-                    val mainReasonsText = mutableListOf<Any>()
-                    it.data.forEach { title ->
-                        val currentLanguage = Lingver.getInstance().getLanguage()
-                        if (currentLanguage == Constants.AR_LANGUAGE) {
-                            mainReasonsText.add(title.titleAr)
-                        } else {
-                            mainReasonsText.add(title.titleEn)
-                        }
-                    }
-
                     hideProgressBar()
-                    val currentLanguage = Lingver.getInstance().getLanguage()
                     it.data.forEach { lookUp ->
                         data.add(
                             LookUpModel(
                                 lookUpListId = lookUp.id,
-                                listName = if (currentLanguage == Constants.AR_LANGUAGE) lookUp.titleAr else
-                                    lookUp.titleEn
+                                listName = changeLanguage(lookUp.titleAr, lookUp.titleEn)
                             )
                         )
                     }
@@ -406,23 +392,11 @@ class LookUpSearchFragment : BaseBottomSheetDialogFragment(), View.OnClickListen
 
                 is NetworkResult.Success -> {
                     hideProgressBar()
-                    val mainReasonsText = mutableListOf<Any>()
-                    it.data.forEach { title ->
-                        val currentLanguage = Lingver.getInstance().getLanguage()
-                        if (currentLanguage == Constants.AR_LANGUAGE) {
-                            mainReasonsText.add(title.titleAr)
-                        } else {
-                            mainReasonsText.add(title.titleEn)
-                        }
-                    }
-                    hideProgressBar()
-                    val currentLanguage = Lingver.getInstance().getLanguage()
                     it.data.forEach { lookUp ->
                         data.add(
                             LookUpModel(
                                 lookUpListId = lookUp.id,
-                                listName = if (currentLanguage == Constants.AR_LANGUAGE) lookUp.titleAr else
-                                    lookUp.titleEn
+                                listName = changeLanguage(lookUp.titleAr, lookUp.titleEn)
                             )
                         )
                     }
@@ -495,6 +469,108 @@ class LookUpSearchFragment : BaseBottomSheetDialogFragment(), View.OnClickListen
 //                }
 //            }
 //        }
+    }
+
+    private fun getAllCountries() {
+        clientProfileViewModel.getAllCountries()
+        viewLifecycleOwner.lifecycleScope.launch {
+            clientProfileViewModel.getAllCountries.collect {
+                when (it) {
+                    is NetworkResult.Loading -> {
+
+                    }
+
+                    is NetworkResult.Success -> {
+                        hideProgressBar()
+                        it.data.data.forEach { lookUp ->
+                            data.add(
+                                LookUpModel(
+                                    lookUpListId = lookUp.id,
+                                    listName = changeLanguage(lookUp.titleAr, lookUp.titleEn)
+                                )
+                            )
+                        }
+                        initRecyclerView(data)
+                    }
+
+                    is NetworkResult.Exception -> {
+
+                    }
+
+                    else -> {
+
+                    }
+                }
+            }
+        }
+    }
+
+    private fun getAllRegions(countryId: Int) {
+        clientProfileViewModel.getAllRegions(countryId)
+        viewLifecycleOwner.lifecycleScope.launch {
+            clientProfileViewModel.getAllRegions.collect {
+                when (it) {
+                    is NetworkResult.Loading -> {
+
+                    }
+
+                    is NetworkResult.Success -> {
+                        hideProgressBar()
+                        it.data.data.forEach { lookUp ->
+                            data.add(
+                                LookUpModel(
+                                    lookUpListId = lookUp.id,
+                                    listName = changeLanguage(lookUp.titleAr, lookUp.titleEn)
+                                )
+                            )
+                        }
+                        initRecyclerView(data)
+                    }
+
+                    is NetworkResult.Exception -> {
+
+                    }
+
+                    else -> {
+
+                    }
+                }
+            }
+        }
+    }
+
+    private fun getAllCities(countryId: Int, regionId: Int) {
+        clientProfileViewModel.getAllCities(countryId, regionId)
+        viewLifecycleOwner.lifecycleScope.launch {
+            clientProfileViewModel.getAllCities.collect {
+                when (it) {
+                    is NetworkResult.Loading -> {
+
+                    }
+
+                    is NetworkResult.Success -> {
+                        hideProgressBar()
+                        it.data.data.forEach { lookUp ->
+                            data.add(
+                                LookUpModel(
+                                    lookUpListId = lookUp.id,
+                                    listName = changeLanguage(lookUp.titleAr, lookUp.titleEn)
+                                )
+                            )
+                        }
+                        initRecyclerView(data)
+                    }
+
+                    is NetworkResult.Exception -> {
+
+                    }
+
+                    else -> {
+
+                    }
+                }
+            }
+        }
     }
 
     private fun getDropDownList(endPoint: String, active: Int, queryParams: Map<String, String>) {

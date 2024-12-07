@@ -7,22 +7,24 @@ import android.text.InputType
 import android.text.TextWatcher
 import android.widget.EditText
 import androidx.appcompat.widget.LinearLayoutCompat
+import com.holat.holat.data.models.fields.Field
 import com.holat.holat.ui.dynamic.models.CustomView
 import com.holat.holat.ui.dynamic.models.GlobalView
 import com.holat.holat.ui.dynamic.models.Pattern
-import com.holat.holat.ui.dynamic.models.SaveData
-import com.holat.holat.ui.dynamic.models.TablesModel
 import com.holat.holat.ui.dynamic.views.initialize.drawLabelOrTitle
-import com.holat.holat.utils.listener.OtherListener
+import com.holat.holat.utils.listener.GlobalViewListener
+import com.holat.login.utils.Constants
+import com.holat.login.utils.changeLanguage
+import com.yariksoffice.lingver.Lingver
 import org.json.JSONObject
 
 class CustomEditText {
     private fun customBasicEditText(
         globalView: GlobalView,
         activity: Activity,
-        checkRuleMovementListener: OtherListener,
+        globalViewListener: GlobalViewListener,
         inputType: Int,
-        maxHeight: Int,
+        maxHeight: Int
     ): EditText {
         val layoutParams = LinearLayoutCompat.LayoutParams(
             LinearLayoutCompat.LayoutParams.MATCH_PARENT,
@@ -34,7 +36,7 @@ class CustomEditText {
         editText.setPadding(10, 15, 10, 15)
 //        editText.setTextColor(ContextCompat.getColor(activity,R.color.black))
         editText.setText(globalView.tablesModel.value)
-        editText.isEnabled = globalView.tablesModel.readOnlyFlag == "0"
+//        editText.isEnabled = globalView.tablesModel.readOnlyFlag == "0"
         if (maxHeight != 0) {
             editText.filters = arrayOf(InputFilter.LengthFilter(maxHeight))
 
@@ -76,7 +78,7 @@ class CustomEditText {
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 globalView.tablesModel.value = p0.toString().trim()
-                checkRuleMovementListener.other(globalView.tablesModel)
+                globalViewListener.globalView(globalView)
             }
 
             override fun afterTextChanged(p0: Editable?) {
@@ -116,77 +118,46 @@ class CustomEditText {
     }
 
     private fun drawEditText(
-        allAnswersFirstTable: ArrayList<SaveData>,
+        field: Field,
         globalView: GlobalView,
         activity: Activity,
         inputType: Int,
-        checkRuleMovementListener: OtherListener,
-        maxHeight: Int,
+        globalViewListener: GlobalViewListener,
+        maxHeight: Int
     ): CustomView<EditText>? {
-        allAnswersFirstTable.forEach {
-            if (it.columnName.lowercase() == globalView.tablesModel.questDbColumnName.lowercase())
-                globalView.tablesModel.value = it.value
-        }
         globalView.editTextView = CustomView()
-        globalView.editTextView?.title = activity.drawLabelOrTitle(true, globalView)
+        globalView.editTextView?.title = activity.drawLabelOrTitle(true, changeLanguage(field.display_name_ar,field.display_name_en))
         globalView.editTextView?.typeView = customBasicEditText(
             globalView = globalView,
             activity = activity,
             inputType = inputType,
-            checkRuleMovementListener = checkRuleMovementListener,
+            globalViewListener = globalViewListener,
             maxHeight = maxHeight
         )
         return globalView.editTextView
     }
-//    fun <T>drawSelectEditText(
-//        mainData: MainReasons,
-//        activity: Activity,
-//        data: ArrayList<T>,
-//        checkRuleMovementListener: SelectListener<CustomAttributes>
-//    ): CustomView<EditText> {
-//        val customView = CustomView<EditText>()
-//        //if (mainData.isNotEmpty()) {
-//        //val result = lookUpViewModel.getLookUpMethod(mainData.questLookUpId.toInt(), SessionClassMain.currentLanguage)
-//        if (data != null) {
-//            customView.customAttributes = CustomAttributes()
-//            val customTextView = CustomTextView()
-//
-//            customView.title = customTextView.drawLabel(true, mainData, activity = activity)
-//
-//            customView.typeView = customEditTextSelect(
-//                activity,
-//                customView.customAttributes!!,
-//                object : SelectListener<CustomAttributes> {
-//
-//                    override fun onClick(t: CustomAttributes) {
-//                        checkRuleMovementListener.onClick(t)
-//                    }
-//                })
-//            //   }
-//        }
-//        return customView
-//    }
+
     suspend fun drawEditTextOnView(
         activity: Activity,
+        field: Field,
         globalView: GlobalView,
-        allAnswersFirstTable: ArrayList<SaveData>,
         inputType: Int = InputType.TYPE_CLASS_TEXT,
         maxHeight: Int = 0,
-        checkRuleMovementListener: (TablesModel) -> Unit,
-        drawView: suspend (GlobalView) -> Unit,
+        globalViewListener: (GlobalView) -> Unit,
+        drawView: suspend (GlobalView) -> Unit
     ): GlobalView {
         val customView = drawEditText(
+            field = field,
             globalView = globalView,
-            allAnswersFirstTable = allAnswersFirstTable,
             activity = activity,
             inputType = inputType,
             maxHeight = maxHeight,
-            checkRuleMovementListener = object : OtherListener {
-                override fun other(tablesModel: TablesModel) {
-                    checkRuleMovementListener(tablesModel)
-
+            globalViewListener = object : GlobalViewListener {
+                override fun globalView(globalView: GlobalView) {
+                    globalViewListener(globalView)
                 }
             })
+        globalView.field = field
         globalView.editTextView = customView
         globalView.editTextView?.title = customView?.title
         drawView(globalView)

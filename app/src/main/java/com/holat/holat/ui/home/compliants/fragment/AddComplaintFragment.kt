@@ -1,8 +1,8 @@
 package com.holat.holat.ui.home.compliants.fragment
 
+import android.text.InputType
 import android.view.View
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.Lifecycle
@@ -11,17 +11,18 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.holat.holat.R
-import com.holat.holat.data.models.compliant.mainreasons.MainReasons
 import com.holat.holat.data.models.fields.Field
 import com.holat.holat.databinding.FragmentAddComplaintBinding
 import com.holat.holat.ui.dynamic.enums.ViewType
 import com.holat.holat.ui.dynamic.fragments.LookUpSearchFragment_FRAGMENT_RESULT_KEY
 import com.holat.holat.ui.dynamic.models.GlobalView
+import com.holat.holat.ui.dynamic.views.CustomCheckBox
 import com.holat.holat.ui.dynamic.views.CustomEditText
 import com.holat.holat.ui.dynamic.views.CustomSelectEditText
 import com.holat.holat.ui.home.adapter.UploadImageOrFileAdapter
 import com.holat.holat.ui.home.compliants.viewmodel.CompliantViewModel
 import com.holat.holat.ui.home.sheetdialog.LookUpSearchFragment_FRAGMENT_DATA
+import com.holat.holat.utils.extractText
 import com.holat.login.base.BaseFragment
 import com.holat.login.models.LookUpModel
 import com.holat.login.models.UploadImageOrFile
@@ -63,14 +64,15 @@ class AddComplaintFragment : BaseFragment() {
     private val compliantViewModel by activityViewModels<CompliantViewModel>()
     private lateinit var uploadImageOrFileAdapter: UploadImageOrFileAdapter
     private val currentLanguage = Lingver.getInstance().getLanguage()
-    private val customEditText = CustomEditText()
     private var ticketTypeId = -1
     private var mainReasonId = -1
     private var hospitalId = -1
     private var subSubReasonId = -1
     private var subReasonId = -1
     private val customSelectEditText = CustomSelectEditText()
-    private var globalAllQuestions = CopyOnWriteArrayList<GlobalView>()
+    private val customEditText = CustomEditText()
+    private val customCheckBox = CustomCheckBox()
+      private var globalAllViews = CopyOnWriteArrayList<GlobalView>()
     private suspend fun drawSelectEditText(field: Field) {
         val initGlobalView = GlobalView()
         val editTextView = customSelectEditText.drawSelectEditTextOnView(
@@ -81,7 +83,17 @@ class AddComplaintFragment : BaseFragment() {
                 setFragmentListenerForLookUpsFragment(
                     globalView = globalView
                 )
-                val id = if (globalView.tablesModel.value.isEmpty()) 0 else globalView.tablesModel.value.toInt()
+                var id = 0
+                val dependedOnFields = extractText(field.depend_on_fields.toString())
+                run getIds@{
+                    globalAllViews.forEach { view->
+                        if (view.field?.field == dependedOnFields){
+                            if (view.tablesModel.value.isNotEmpty())
+                                id = view.tablesModel.value.toInt()
+                            return@getIds
+                        }
+                    }
+                }
                 val action =
                     AddComplaintFragmentDirections.actionComplaintFragmentToLookUpSearchFragment2(
                         id = id,
@@ -98,9 +110,63 @@ class AddComplaintFragment : BaseFragment() {
                 }
 
             })
-        globalAllQuestions.add(editTextView)
+        globalAllViews.add(editTextView)
     }
+    private suspend fun drawEditText(field: Field) {
+        val initGlobalView = GlobalView()
+        val editTextView = customEditText.drawEditTextOnView(
+            activity = requireActivity(),
+            field = field,
+            globalView = initGlobalView,
+            globalViewListener = { globalView ->
+                //Check rule if there
+            }, drawView = { data ->
+                if (data.editTextView != null) {
+                    withContext(Dispatchers.Main) {
+                        binding.linearLayoutCompat.addView(data.editTextView?.title)
+                        binding.linearLayoutCompat.addView(data.editTextView?.typeView)
+                    }
+                }
 
+            })
+        globalAllViews.add(editTextView)
+    }
+    private suspend fun drawEditTextNumber(field: Field) {
+        val initGlobalView = GlobalView()
+        val editTextView = customEditText.drawEditTextOnView(
+            activity = requireActivity(),
+            field = field,
+            globalView = initGlobalView,
+            inputType = InputType.TYPE_CLASS_NUMBER,
+            globalViewListener = { globalView ->
+                //Check rule if there
+            }, drawView = { data ->
+                if (data.editTextView != null) {
+                    withContext(Dispatchers.Main) {
+                        binding.linearLayoutCompat.addView(data.editTextView?.title)
+                        binding.linearLayoutCompat.addView(data.editTextView?.typeView)
+                    }
+                }
+
+            })
+        globalAllViews.add(editTextView)
+    }
+    private suspend fun drawCheckBox(field: Field) {
+        val initGlobalView = GlobalView()
+        val checkBoxView = customCheckBox.drawCheckBoxOnView(
+            field = field,
+            globalView = initGlobalView,
+            activity = requireActivity(),
+            otherListener = {
+            }, drawView = { data ->
+                if (data.checkBox != null) {
+                    withContext(Dispatchers.Main) {
+                        binding.linearLayoutCompat.addView(data.checkBox?.typeView)
+                    }
+                }
+            })
+        globalAllViews.add(checkBoxView)
+    }
 //    //    private var files: ArrayList<UploadImageOrFile> = arrayListOf()
 //    private fun drawSelectEditText(mainReasons: MainReasons) {
 //        var customView = CustomView<EditText>()
@@ -311,7 +377,7 @@ class AddComplaintFragment : BaseFragment() {
 
                         is NetworkResult.Success -> {
                             val defaultFieldForTicketType = Field(0,0, emptyList(),"",
-                                "","","","",0,ALL_TICKET_TYPES,null,0,0,0,"",0,
+                                "",null,"","","",0,ALL_TICKET_TYPES,null,0,0,0,"",0,
                                 0,0,0,0,"",0,0,0,0,0,0,0,0,
                                 0,0,"","","","","")
                             drawSelectEditText(defaultFieldForTicketType)
@@ -319,40 +385,21 @@ class AddComplaintFragment : BaseFragment() {
                                 when (data.form_field_type_id) {
                                     ViewType.DROPDOWN.type -> {
                                         when (data.field) {
-                                            MAIN_REASON_ID,SUB_REASON_ID,SUB_SUB_REASON_ID,SUB_SUB_SUB_REASON_ID -> {
+                                            MAIN_REASON_ID,SUB_REASON_ID,SUB_SUB_REASON_ID,SUB_SUB_SUB_REASON_ID,
+                                            COUNTRY_ID, REGION_ID, CITY_ID,HOSPITAL_ID-> {
                                                 drawSelectEditText(data)
-//                                        if (currentLanguage == Constants.AR_LANGUAGE) {
-//                                            binding.spinnerTicketType.floatingLabelText =
-//                                                data.display_name_ar
-//                                        } else {
-//                                            binding.spinnerTicketType.floatingLabelText =
-//                                                data.display_name_en
-//                                        }
-                                            }
-
-
-                                            HOSPITAL_ID -> {
-                                                if (currentLanguage == Constants.AR_LANGUAGE) {
-                                                    binding.spinnerMainReasons.floatingLabelText =
-                                                        data.display_name_ar
-                                                } else {
-                                                    binding.spinnerMainReasons.floatingLabelText =
-                                                        data.display_name_en
-                                                }
-                                            }
-
-                                            DETAILS -> {
-                                                if (currentLanguage == Constants.AR_LANGUAGE) {
-                                                    binding.spinnerSubReasons.floatingLabelText =
-                                                        data.display_name_ar
-                                                } else {
-                                                    binding.spinnerSubReasons.floatingLabelText =
-                                                        data.display_name_en
-                                                }
                                             }
                                         }
                                     }
-
+                                    ViewType.TEXT.type->{
+                                        drawEditText(data)
+                                    }
+                                    ViewType.PHONE.type->{
+                                        drawEditTextNumber(data)
+                                    }
+                                    ViewType.CHECKBOX.type->{
+                                        drawEditTextNumber(data)
+                                    }
                                 }
                             }
                             hideProgressBar()
@@ -375,63 +422,6 @@ class AddComplaintFragment : BaseFragment() {
 
             }
         }
-//        lifecycleScope.launch {
-//            repeatOnLifecycle(Lifecycle.State.STARTED) {
-//                compliantViewModel.getFields.collect {
-//                    when (it) {
-//                        is NetworkResult.Loading -> {
-//                            showProgressBar()
-//                        }
-//
-//                        is NetworkResult.Success -> {
-//                            it.data.fields.forEach { data ->
-//                                when (data.field) {
-//                                    MAIN_REASON_ID -> {
-//
-//                                        if (currentLanguage == Constants.AR_LANGUAGE) {
-//                                            binding.spinnerTicketType.floatingLabelText =data.display_name_ar
-//                                        } else {
-//                                            binding.spinnerTicketType.floatingLabelText =data.display_name_en
-//                                        }
-//                                    }
-//
-//                                    HOSPITAL_ID -> {
-//                                        if (currentLanguage == Constants.AR_LANGUAGE) {
-//                                            binding.spinnerMainReasons.floatingLabelText =data.display_name_ar
-//                                        } else {
-//                                            binding.spinnerMainReasons.floatingLabelText =data.display_name_en
-//                                        }
-//                                    }
-//
-//                                    DETAILS -> {
-//                                        if (currentLanguage == Constants.AR_LANGUAGE) {
-//                                            binding.spinnerSubReasons.floatingLabelText =data.display_name_ar
-//                                        } else {
-//                                            binding.spinnerSubReasons.floatingLabelText =data.display_name_en
-//                                        }
-//                                    }
-//                                }
-//                            }
-//                            allTicketType()
-//                            hideProgressBar()
-//                        }
-//
-//                        is NetworkResult.Error -> {
-//                            showError(it.code, it.responseBody)
-//                            hideProgressBar()
-//                        }
-//
-//                        is NetworkResult.ErrorEX -> {
-//                            hideProgressBar()
-//                        }
-//
-//                        is NetworkResult.Exception -> {
-//                            hideProgressBar()
-//                        }
-//                    }
-//                }
-//            }
-//        }
     }
 
     private fun getAllOrganization(mainReasonId: Int) {

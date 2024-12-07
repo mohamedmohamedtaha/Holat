@@ -6,7 +6,7 @@ data class Field(
     val constrain_field_option_ids: List<String>,
     val created_at: String, // 2021-07-05 15:57:14
     val deleted_at: Any?= null, // null
-//    val depend_on_fields: String, // ["ticket_type_id"]
+   val depend_on_fields: Any?=null, // ["ticket_type_id"]
     val details: String, // السبب الرئيسي
     val display_name_ar: String, // السبب الرئيسي     القطاع
     val display_name_en: String, // main reason
